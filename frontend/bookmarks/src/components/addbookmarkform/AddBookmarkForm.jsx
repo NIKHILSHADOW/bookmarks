@@ -31,6 +31,10 @@ const AddBookmarkForm = () => {
             })
     }, [])
 
+    function moveToBookmarkList(e) {
+        e.preventDefault()
+        navigator('/bookmark-list')
+    }
 
     function addBookmarkSubmit(e) {
         e.preventDefault();
@@ -54,6 +58,8 @@ const AddBookmarkForm = () => {
                     return res.data
                 });
         }
+
+        return;
 
     }
 
@@ -94,7 +100,7 @@ const AddBookmarkForm = () => {
                                 </tr>
                                 <tr>
                                     <td>
-
+                                        <button className="btn btn-success" onClick={(e) => moveToBookmarkList(e)}> Cancel </button>
                                     </td>
                                     <td>
                                         <button className="btn btn-success" onClick={(e) => addBookmarkSubmit(e)}> Submit </button>

@@ -27,7 +27,8 @@ const BookmarksList = () => {
             .deleteBookmarkById(id)
     }
 
-    function updateBookmark(title) {
+    function updateBookmark(e, title) {
+        e.preventDefault()
         navigator(`/add-bookmark/${title}`)
     }
 
@@ -66,7 +67,7 @@ const BookmarksList = () => {
                                         <td>{bookmark.description}</td>
                                         <td>{bookmark.link}</td>
                                         <td>
-                                            <button className="btn btn-warning" onClick={() => updateBookmark(bookmark.title)}>Update</button>
+                                            <button className="btn btn-warning" onClick={(e) => updateBookmark(e, bookmark.title)}>Update</button>
                                             <button className="btn btn-danger" onClick={() => deleteBookMark(bookmark.id)}>Delete</button>
                                         </td>
                                     </tr>

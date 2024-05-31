@@ -1,7 +1,7 @@
 
 
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import BookmarkService from '../../services/bookmarkservices/BookmarkService';
 
 const Bookmark = () => {
@@ -10,6 +10,8 @@ const Bookmark = () => {
 
 
     const [bookmark, setBookmark] = useState({});
+
+    const navigator = useNavigate()
 
     useEffect(
         () => {
@@ -22,6 +24,10 @@ const Bookmark = () => {
                 })
         }, []
     )
+
+    function moveToBookmarkList() {
+        navigator('/bookmark-list')
+    }
 
     return (
         <div className='container'>
@@ -51,6 +57,12 @@ const Bookmark = () => {
                         <tr>
                             <th>Link</th>
                             <td>{bookmark.link}</td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>
+                                <button className="btn btn-success" onClick={() => moveToBookmarkList()}> Cancel </button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
